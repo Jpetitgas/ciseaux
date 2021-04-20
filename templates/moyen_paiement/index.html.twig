@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Moyen de paiement
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+		<h1 style="text-align: center">Liste des Moyens de paiement</h1>
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-2">
+				<h4>Type</h4>
+			</div>
+
+		</div>
+		{% for moyenpaiement in moyenpaiements %}
+			<div class="row">
+				<div class="col-sm-2">{{ moyenpaiement.typeDePaiement}}</div>
+				<div class="col-sm-2">
+					<a href="{{path("moyen_paiement_edit", {'id': moyenpaiement.id})}}" class="btn btn-primary">
+						<i class=" fas fa-edit"></i>
+					</a>
+					<a href="{{path("moyen_paiement_delete", {'id': moyenpaiement.id})}}" class="btn btn-danger">
+						<i class=" fas fa-trash"></i>
+					</a>
+				</div>
+			</div>
+		{% endfor %}
+	</div>
+	{{form_start(formView)}}
+	{{form_errors(formView)}}
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-2">{{form_row(formView.typeDePaiement,{'label' :false})}}</div>
+			<div class="col-sm-2">
+				<button type="submit" class="btn btn-primary">
+					<i class=" fas fa-save"></i>
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+{{form_end(formView)}}{% endblock %}

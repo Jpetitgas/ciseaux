@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Title of the PDF</title>
+	</head>
+	<body>
+		<center>
+			<table width="100%">
+				<tbody>
+					<img src "/img/logo.png">
+
+					<tr>
+						<td>
+							<p>Les Ciseaux de LOLO</p>
+							<p>12 rue xxx</p>
+							<p>63730 Les Martres de Veyre</p>
+							<p>Tel : 06 xx xx xx xx</p>
+						</td>
+					</tr>
+					<tr>
+						<td align="center">Facture émise le
+							{{facture.date | date ('d/m/y')}}</td>
+						<td></td>
+						<td align="center">
+							<p>{{ client.nom}}
+								{{client.prenom}}</p>
+							<p>{{ client.adresse}}</p>
+							<p>{{ client.codepostal}}</p>
+							<p>{{ client.ville}}</p>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="3" align="center">
+							<h1>FACTURE n°{{ facture.id }}</h1>
+						</td>
+					</tr>
+
+				</tbody>
+			</table>
+		</center>
+
+
+		<table width="100%" border:5px solid #095484>
+			<thead>
+				<tr bgcolor="#D3D3D3">
+					<td align="center">
+						<h3>DESIGNATION</h2>
+					</td>
+					<td align="center">
+						<h3>Type de prestation</h2>
+					</td>
+
+					<td align="center">
+						<h2>PRIX</h2>
+					</td>
+				</tr>
+			</thead>
+			<tbody>
+				{% for detail in details %}
+					<tr>
+						<td align="center">{{detail.designation}}</td>
+						<td align="center">{{detail.typePrestation}}</td>
+						<td align="center">{{detail.prix}}
+							Eur</td>
+					</tr>
+				{% endfor %}
+				{% set somme=0%}
+				{% for total in totals%}
+					<tr>
+						<td colspan="2" align="right">{{total.typeDePrestation}}</td>
+						<td align="center">{{total.total}}
+							Eur</td>
+					</tr>
+					{% set somme=somme+total.total%};
+
+				{% endfor %}
+				<tr>
+					<td colspan="2" align="right">TOTAL</td>
+					<td align="center">{{somme}}
+						Eur</td>
+				</tr>
+			</tbody>
+		</tbody>
+	</body>
+</html></table><div>Payé en :{{facture.typeDePaiement }}</div></body></html>

@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Client
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+
+		<h1 style="text-align: center">Liste des clients</h1>
+
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-2"><h4>Nom</h4></div>
+			<div class="col-sm-2"><h4>Prénom</h4></div>
+			<div class="col-sm-2"><h4>Adresse</h4></div>
+			<div class="col-sm-2"><h4>CP</h4></div>
+			<div class="col-sm-2"><h4>Ville</h4></div>
+			<div class="col-sm-2"><h4>Action</h4></div>
+		</div>
+		{% for client in clients %}
+			<div class="row">
+				<div class="col-sm-2">{{ client.nom}}</div>
+				<div class="col-sm-2">{{ client.prenom}}</div>
+				<div class="col-sm-2">{{ client.adresse}}</div>
+				<div class="col-sm-2">{{ client.codepostal}}</div>
+				<div class="col-sm-2">{{ client.ville}}</div>
+				<div class="col-sm-2">
+					<a href="{{path("client_edit", {'id': client.id})}}" class="btn btn-primary">
+						<i class=" fas fa-edit"></i>
+					</a>
+					<a href="{{path("client_delete", {'id': client.id})}}" class="btn btn-danger">
+						<i class=" fas fa-trash"></i>
+					</a>
+				</div>
+			</div>
+		{% endfor %}
+	</div>
+	{{form_start(formView)}}
+	{{form_errors(formView)}}
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-2">{{form_row(formView.nom,{'label' :false})}}</div>
+			<div class="col-sm-2">{{form_row(formView.prenom,{'label' :false})}}</div>
+			<div class="col-sm-2">{{form_row(formView.adresse,{'label' :false})}}</div>
+			<div class="col-sm-2">{{form_row(formView.codepostal,{'label' :false})}}</div>
+			<div class="col-sm-2">{{form_row(formView.ville,{'label' :false})}}</div>
+			<div class="col-sm-2">
+				<button type="submit" class="btn btn-primary">
+					<i class=" fas fa-save"></i>
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+{{form_end(formView)}}{% endblock %}

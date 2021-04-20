@@ -1,0 +1,71 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Facture!
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+		<h1 style="text-align: center">FACTURE</h1>
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-2">
+				<h4>Ref</h4>
+			</div>
+			<div class="col-2">
+				<h4>Date</h4>
+			</div>
+			<div class="col-4">
+				<h4>Client</h4>
+			</div>
+			<div class="col-2">
+				<h4>type de paiement</h4>
+			</div>
+
+			<div class="col-2">
+				<h4>Action</h4>
+			</div>
+
+		</div>
+		{% for facture in factures %}
+			<div class="row">
+				<div class="col-2">{{ facture.id}}</div>
+
+				<div class="col-2">{{ facture.date | date("d/m/Y")}}</div>
+				<div class="col-4">{{ facture.client.nom}}
+					{{ facture.client.prenom}}</div>
+				<div class="col-2">{{ facture.typeDePaiement}}</div>
+
+				<div class="col-2">
+					<a href="{{path("detail_facture_edit", {'id_facture': facture.id})}}" class="btn btn-primary">
+						<i class=" fas fa-edit"></i>
+					</a>
+					<a href="{{path("facture_pdf", {'id_facture': facture.id})}}" class="btn btn-primary">
+						<i class=" fas fa-file-pdf"></i>
+					</a>
+					{# <a href="{{path("facture_delete", {'id': facture.id})}}" class="btn btn-danger">
+																																				<i class=" fas fa-trash"></i>
+																																			</a> #}
+				</div>
+			</div>
+		{% endfor %}
+	</div>
+	{{form_start(formView)}}
+	{{form_errors(formView)}}
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-2"></div>
+			<div class="col-sm-2">{{form_row(formView.date,{'label' :false})}}</div>
+			<div class="col-sm-4">{{form_row(formView.client,{'label' :false})}}</div>
+			<div class="col-sm-2">{{form_row(formView.typeDePaiement,{'label' :false})}}</div>
+
+
+			<div class="col-sm-2">
+				<button type="submit" class="btn btn-primary">
+					<i class=" fas fa-save"></i>
+				</button>
+			</div>
+		</div>
+	</div>
+	{{form_end(formView)}}
+{% endblock %}
