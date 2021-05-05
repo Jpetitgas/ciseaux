@@ -35,8 +35,14 @@ class GraphDataPrestation
             }
                      
         }
-        $data['dataPds']=$dataPds;
-        $data['dataVente']=$dataVente;
+        $data['dataPds']=0;
+        $data['dataVente']=0;
+        if (!empty($dataPds)){
+            $data['dataPds']=$dataPds;
+        }
+        if (!empty($dataVente)){
+            $data['dataVente']=$dataVente;
+        };
         return $data;
     }
 }
