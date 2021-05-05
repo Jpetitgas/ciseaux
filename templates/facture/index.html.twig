@@ -5,8 +5,27 @@
 
 {% block body %}
 	<div class="container">
-		<h1 style="text-align: center">FACTURE</h1>
+		<h1 style="text-align: center">FACTURES</h1>
 	</div>
+	{{form_start(formView)}}
+	{{form_errors(formView)}}
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-2"></div>
+			<div class="col-sm-2">{{form_row(formView.date,{'label' :false})}}</div>
+			<div class="col-sm-4">{{form_row(formView.client,{'label' :false})}}</div>
+			<div class="col-sm-2">{{form_row(formView.typeDePaiement,{'label' :false})}}</div>
+
+
+			<div class="col-sm-2">
+				<button type="submit" class="btn btn-primary">
+					<i class=" fas fa-save"></i>
+				</button>
+			</div>
+		</div>
+	</div>
+	{{form_end(formView)}}
+
 	<div class="container">
 		<div class="row">
 			<div class="col-2">
@@ -38,34 +57,21 @@
 
 				<div class="col-2">
 					<a href="{{path("detail_facture_edit", {'id_facture': facture.id})}}" class="btn btn-primary">
-						<i class=" fas fa-edit"></i>
+						<i class="fas fa-plus"></i>
 					</a>
+					<a href="{{path("facture_edit", {'id_facture': facture.id})}}" class="btn btn-primary">
+						<i class="fas fa-edit"></i>
+					</a>
+
 					<a href="{{path("facture_pdf", {'id_facture': facture.id})}}" class="btn btn-primary">
-						<i class=" fas fa-file-pdf"></i>
+						<i class="fas fa-file-pdf"></i>
 					</a>
 					{# <a href="{{path("facture_delete", {'id': facture.id})}}" class="btn btn-danger">
-																																				<i class=" fas fa-trash"></i>
-																																			</a> #}
+																																														<i class=" fas fa-trash"></i>
+																																													</a> #}
 				</div>
 			</div>
 		{% endfor %}
 	</div>
-	{{form_start(formView)}}
-	{{form_errors(formView)}}
-	<div class="container">
-		<div class="row">
-			<div class="col-sm-2"></div>
-			<div class="col-sm-2">{{form_row(formView.date,{'label' :false})}}</div>
-			<div class="col-sm-4">{{form_row(formView.client,{'label' :false})}}</div>
-			<div class="col-sm-2">{{form_row(formView.typeDePaiement,{'label' :false})}}</div>
 
-
-			<div class="col-sm-2">
-				<button type="submit" class="btn btn-primary">
-					<i class=" fas fa-save"></i>
-				</button>
-			</div>
-		</div>
-	</div>
-	{{form_end(formView)}}
 {% endblock %}

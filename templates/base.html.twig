@@ -20,67 +20,65 @@
 		<!-- Core theme CSS (includes Bootstrap)-->
 		<link href="/css/styles.css" rel="stylesheet"/>
 		{% block stylesheets %}
-		{{ encore_entry_script_tags('app')}}
+			{{ encore_entry_script_tags('app')}}
 		{% endblock %}
 		{% block javascripts %}
 			{{ encore_entry_script_tags('app')}}
 		{% endblock %}
 
-		</head>
-		<body>
+	</head>
+	<body>
 
-			<!-- Navigation-->
-			<nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
-				<div class="container">
-					<a class="navbar-brand js-scroll-trigger" href="#page-top">Les ciseaux de Lolo</a>
-					<button class="navbar-toggler navbar-toggler-right text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-						Menu
-						<i class="fas fa-bars"></i>
-					</button>
-					<div class="collapse navbar-collapse" id="navbarResponsive">
-						<ul class="navbar-nav ml-auto">
-							<li class="nav-item mx-0 mx-lg-1">
-								<a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{{path('client')}}">Les clients</a>
-							</li>
-							<li class="nav-item mx-0 mx-lg-1">
-								<a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{{path('facture')}}">Les factures</a>
-							</li>
-							<li class="nav-item mx-0 mx-lg-1">
-								<a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{{path('moyen_paiement')}}">Moyen de paiement</a>
-							</li>
-							<li class="nav-item mx-0 mx-lg-1">
-								<a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{{path('prestation')}}">Prestation</a>
-							</li>
+		<!-- Navigation-->
+		<nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
+			<div class="container">
+				<a class="navbar-brand js-scroll-trigger" href="#page-top">Les ciseaux de Lolo</a>
+				<button class="navbar-toggler navbar-toggler-right text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+					Menu
+					<i class="fas fa-bars"></i>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarResponsive">
+					<ul class="navbar-nav ml-auto">
+						<li class="nav-item mx-0 mx-lg-1">
+							<a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{{path('client')}}">Les clients</a>
+						</li>
+						<li class="nav-item mx-0 mx-lg-1">
+							<a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{{path('facture')}}">Les factures</a>
+						</li>
+						<li class="nav-item mx-0 mx-lg-1">
+							<a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{{path('index_admin')}}">Graphique</a>
+
+						</li>
 
 
-						</ul>
+					</ul>
+				</div>
+			</div>
+		</nav>
+		<!-- Masthead-->
+
+		<header class="masthead"> {% block body %}{% endblock %}
+			</header>
+
+			<footer>
+				<!-- Copyright Section-->
+				<div class="copyright py-4 text-center text-white">
+					<div class="container">
+						<small>Copyright © Les ciseaux de Lolo 2020</small>
 					</div>
 				</div>
-			</nav>
-			<!-- Masthead-->
 
-			<header class="masthead"> {% block body %}{% endblock %}
-				</header>
-
-				<footer>
-					<!-- Copyright Section-->
-					<div class="copyright py-4 text-center text-white">
-						<div class="container">
-							<small>Copyright © Les ciseaux de Lolo 2020</small>
-						</div>
-					</div>
-
-				</footer>
-				<!-- Bootstrap core JS-->
-				<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-				<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
-				<!-- Third party plugin JS-->
-				<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+			</footer>
+			<!-- Bootstrap core JS-->
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+			<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
+			<!-- Third party plugin JS-->
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
 
 
-				<!-- Core theme JS-->
-				<script src="/js/scripts.js"></script>
-			</body>
+			<!-- Core theme JS-->
+			<script src="/js/scripts.js"></script>
+		</body>
 
 
-		</html>
+	</html>

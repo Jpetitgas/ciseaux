@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Facture
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+
+		<h1 style="text-align: center">Facture n°{{facture}}</h1>
+
+	</div>
+
+	{{form_start(formView)}}
+	{{form_errors(formView)}}
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-3">{{form_row(formView.date)}}</div>
+			<div class="col-sm-5">{{form_row(formView.client)}}</div>
+			<div class="col-sm-2">{{form_row(formView.typeDePaiement)}}</div>
+
+
+			<div class="col-sm-2">
+				<button type="submit" class="btn btn-primary">
+					<i class=" fas fa-save"></i>
+				</button>
+			</div>
+		</div>
+	</div>
+	{{form_end(formView)}}
+{% endblock %}

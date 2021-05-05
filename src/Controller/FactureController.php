@@ -72,5 +72,33 @@ class FactureController extends AbstractController
 
         ]);
     }
+    /**
+     * @Route("/admin/facture/{id_facture}", name="facture_edit")
+     */
+    public function editFacture($id_facture, FactureRepository $factureRepository,DetailFactureRepository $detailFactureRepository, Request $request, EntityManagerInterface $em)
+    {
+        $facture = $factureRepository->find($id_facture);
+        
+               
+                
+        $form = $this->createForm(FactureType::class, $facture);
+        
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em->persist($facture);
+            $em->flush();
+            return $this->RedirectToRoute('facture');
+        }
+        
+        $formView = $form->createView();
+
+        return $this->render('facture/editFacture.html.twig', [
+            'facture' => $id_facture,
+            
+            'formView' => $formView,
+
+        ]);
+    }
     
 }

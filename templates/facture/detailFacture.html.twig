@@ -8,55 +8,64 @@
 
 		<h1 style="text-align: center">Detail de la facture n°{{facture}}</h1>
 
-	</div>
-	<div class="container">
-		<div class="row">
-			<div class="col-sm-3">
-				<h4>type De Prestation</h4>
-			</div>
 
-			<div class="col-sm-5">
-				<h4>Designation</h4>
-			</div>
-			<div class="col-sm-2" style="text-align: center">
-				<h4>Prix</h4>
-			</div>
-			<div class="col-sm-2">
-				<h4>Action</h4>
-			</div>
-
-		</div>
-		{% for detail in details %}
+		<div class="container">
 			<div class="row">
-				<div class="col-sm-3">{{ detail.typePrestation}}</div>
-				<div class="col-sm-5">{{ detail.designation}}</div>
-				<div class="col-sm-2" style="text-align: center">{{ detail.prix}}
-					Eur</div>
+				<div class="col-sm-3">
+					<h4>type De Prestation</h4>
+				</div>
+
+				<div class="col-sm-5">
+					<h4>Designation</h4>
+				</div>
+				<div class="col-sm-2" style="text-align: center">
+					<h4>Prix</h4>
+				</div>
 				<div class="col-sm-2">
-					<a href="{{path("detail_edit", {'id': detail.id})}}" class="btn btn-primary">
-						<i class=" fas fa-edit"></i>
-					</a>
-					<a href="{{path("detail_delete", {'id': detail.id})}}" class="btn btn-danger">
-						<i class=" fas fa-trash"></i>
-					</a>
+					<h4>Action</h4>
+				</div>
+
+			</div>
+			{% for detail in details %}
+				<div class="row">
+					<div class="col-sm-3">{{ detail.typePrestation}}</div>
+					<div class="col-sm-5">{{ detail.designation}}</div>
+					<div class="col-sm-2" style="text-align: center">{{ detail.prix}}
+						Eur</div>
+					<div class="col-sm-2">
+						<a href="{{path("detail_edit", {'id': detail.id})}}" class="btn btn-primary">
+							<i class=" fas fa-edit"></i>
+						</a>
+						<a href="{{path("detail_delete", {'id': detail.id})}}" class="btn btn-danger">
+							<i class=" fas fa-trash"></i>
+						</a>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+		{{form_start(formView)}}
+		{{form_errors(formView)}}
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-3">{{form_row(formView.typePrestation,{'label' :false})}}</div>
+				<div class="col-sm-5">{{form_row(formView.designation,{'label' :false})}}</div>
+				<div class="col-sm-2" style="text-align: center">{{form_row(formView.prix,{'label' :false})}}</div>
+
+				<div class="col-sm-2">
+					<button type="submit" class="btn btn-primary">
+						<i class=" fas fa-save"></i>
+					</button>
 				</div>
 			</div>
-		{% endfor %}
-	</div>
-	{{form_start(formView)}}
-	{{form_errors(formView)}}
-	<div class="container">
-		<div class="row">
-			<div class="col-sm-3">{{form_row(formView.typePrestation,{'label' :false})}}</div>
-			<div class="col-sm-5">{{form_row(formView.designation,{'label' :false})}}</div>
-			<div class="col-sm-2" style="text-align: center">{{form_row(formView.prix,{'label' :false})}}</div>
+		</div>
+		{{form_end(formView)}}
+		<div style="text-align: center">
 
-			<div class="col-sm-2">
-				<button type="submit" class="btn btn-primary">
-					<i class=" fas fa-save"></i>
-				</button>
-			</div>
+			<a href="{{path("facture")}}" class="btn btn-primary">
+				Retour vers les factures
+			</a>
 		</div>
 	</div>
-	{{form_end(formView)}}
+
+
 {% endblock %}
